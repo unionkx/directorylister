@@ -21,13 +21,13 @@ RUN \
 	unzip \
         curl && \
  echo "**** install filegator ****" && \
- if [ -z ${FILEGATOR_RELEASE+x} ]; then \
-	FILEGATOR_RELEASE=$(curl -sX GET "https://api.github.com/repos/DirectoryLister/DirectoryLister/releases/latest" \
+ if [ -z ${DirectoryLister_RELEASE+x} ]; then \
+	DirectoryLister_RELEASE=$(curl -sX GET "https://api.github.com/repos/DirectoryLister/DirectoryLister/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
  fi && \
  curl -o \
- /filegator.zip -L \
-	"https://github.com/DirectoryLister/DirectoryLister/releases/download/${FILEGATOR_RELEASE}/DirectoryLister-${FILEGATOR_RELEASE}.zip" && \
+ /DirectoryLister.zip -L \
+	"https://github.com/DirectoryLister/DirectoryLister/releases/download/${FILEGATOR_RELEASE}/DirectoryLister-${DirectoryLister_RELEASE}.zip" && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/*
