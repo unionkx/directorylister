@@ -1,25 +1,24 @@
-  
 #!/usr/bin/with-contenv bash
 
 # make our folders
 echo "Creating base folders"
 mkdir -p \
 	/config/www \
-	/var/www/localhost/filegator
+	/var/www/localhost/directorylister
 
-# install filegator if necessary
-[[ -f /filegator.zip ]] && \
+# install directorylister if necessary
+[[ -f /directorylister.zip ]] && \
  echo "New container detected, installing FileGator" && \
  unzip -qq \
-	/filegator.zip -d \
+	/directorylister.zip -d \
 	/var/www/localhost && \
- echo -e '\n# FileGator user authorization\nfastcgi_param  PHP_AUTH_USER $remote_user;\nfastcgi_param  PHP_AUTH_PW $http_authorization;' >> \
+ echo -e '\n# directorylister user authorization\nfastcgi_param  PHP_AUTH_USER $remote_user;\nfastcgi_param  PHP_AUTH_PW $http_authorization;' >> \
 	/etc/nginx/fastcgi_params && \
- rm -rf /filegator && rm -f /filegator.zip && \
- chown -R abc:abc /var/www/localhost/filegator
+ rm -rf /directorylister && rm -f /directorylister.zip && \
+ chown -R abc:abc /var/www/localhost/directorylister
 
 symlinks=( \
-/var/www/localhost/filegator/private )
+/var/www/localhost/directorylister/private )
 
 for i in "${symlinks[@]}"
 do
@@ -33,12 +32,12 @@ ln -s /config/www/"$(basename "$i")" "$i"
 done
 
 # symlink data folder
-mv /var/www/localhost/filegator/repository /var/www/localhost/filegator/_repository
-ln -s /data /var/www/localhost/filegator/repository
+mv /var/www/localhost/directorylister/repository /var/www/localhost/directorylister/_repository
+ln -s /data /var/www/localhost/directorylister/repository
 
 # permissions
 echo "Setting permissions"
 chown -R abc:abc \
 	/config
 chown -h abc:abc \
-	/var/www/localhost/filegator/repository
+	/var/www/localhost/directorylister/repository
