@@ -26,8 +26,8 @@ RUN \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
  fi && \
  curl -o \
- /DirectoryLister.zip -L \
-	"https://github.com/DirectoryLister/DirectoryLister/releases/download/${FILEGATOR_RELEASE}/DirectoryLister-${DirectoryLister_RELEASE}.zip" && \
+ /directorylister.zip -L \
+	"https://github.com/DirectoryLister/DirectoryLister/releases/download/${DirectoryLister_RELEASE}/DirectoryLister-${DirectoryLister_RELEASE}.zip" && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/*
