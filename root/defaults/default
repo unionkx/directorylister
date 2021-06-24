@@ -1,11 +1,11 @@
-## Version 2021/06/05 - Changelog: https://github.com/xakaff/filegator/master
+## Version 2021/06/05 - Changelog: https://github.com/unionkx/directorylister/master
 
 server {
 	listen 80 default_server;
 
 	listen 443 ssl;
 
-	root /var/www/localhost/filegator/dist;
+	root /var/www/localhost/directorylister/dist;
 	index index.php index.html index.htm;
 
 	server_name _;
