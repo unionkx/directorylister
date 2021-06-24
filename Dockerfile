@@ -20,7 +20,7 @@ RUN \
 	php8-zip \
 	unzip \
         curl && \
- echo "**** install filegator ****" && \
+ echo "**** install DirectoryLister ****" && \
  if [ -z ${DirectoryLister_RELEASE+x} ]; then \
 	DirectoryLister_RELEASE=$(curl -sX GET "https://api.github.com/repos/DirectoryLister/DirectoryLister/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
